@@ -1,0 +1,29 @@
+
+# Avisynth, x264 and the media player must all be 32 or 64 bit
+  AVISource("my_video.avi")
+
+# If AviSource cant open source format
+# DirectShowSource("my_video.xxx")
+
+# If audio only and wav format
+# WAVSource("my_video.wav")
+
+# Histogram()
+# Info()
+
+# Cut and join sections e.g. Trim(0, 60) ++ Trim(90, 120)
+# Use trim if source contains video else use AudioTrim
+# AudioTrim uses seconds not frames
+# AudioTrim(3, 9)
+# From 00:00-00:20 at 24 fps
+  Trim(0, 480)
+
+# x264 expects YV12 (YUV420)
+# Install FFdshow to preview avs files convereted to YV12 format or comment out whilst previewing
+  ConvertToYV12()
+
+# Add 30 frames black to beginning, fadein 00 of the 30
+# Dissolve(blackness(last, 24), last, 00)
+
+# Add 60 frames black to end, fadein 30 frames of the 60
+# Dissolve(last, blackness(last, 48), 24)
